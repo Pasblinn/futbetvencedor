@@ -1,0 +1,52 @@
+# 🧪 DOCKERFILE PARA TESTES DO MOTOR REAL
+FROM python:3.11-slim
+
+# Metadados
+LABEL maintainer="Football Analytics Team"
+LABEL description="Container de testes para motor de predições real"
+LABEL version="2.0.0-test"
+
+# Set working directory
+WORKDIR /app
+
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    curl \
+    wget \
+    git \
+    && rm -rf /var/lib/apt/lists/*
+
+# Copy requirements
+COPY requirements.txt .
+
+# Install Python dependencies
+RUN pip install --no-cache-dir --upgrade pip setuptools wheel && \
+    pip install --no-cache-dir -r requirements.txt
+
+# Copy application code
+COPY . .
+
+# Create test directories
+RUN mkdir -p \
+    tests/results \
+    tests/logs \
+    tests/cache \
+    tests/predictions
+
+# Set environment variables for testing
+ENV PYTHONPATH=/app
+ENV PYTHONUNBUFFERED=1
+ENV PYTHONDONTWRITEBYTECODE=1
+ENV TESTING_MODE=true
+ENV LOG_LEVEL=DEBUG
+
+# 🧠 Variáveis específicas para testes do motor real
+ENV PREDICTION_ENGINE_VERSION=2.0
+ENV ENABLE_REAL_TIME_PREDICTIONS=true
+ENV TEST_WITH_REAL_APIS=true
+ENV CACHE_TEST_RESULTS=true
+
+# Comando para executar testes
+CMD ["python", "test_live_predictions_full.py"]

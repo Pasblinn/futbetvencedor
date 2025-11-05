@@ -1,0 +1,229 @@
+# 🧠 FOOTBALL ANALYTICS v2.0 - MOTOR DE PREDIÇÕES REAL
+# Docker Compose criado do ZERO para compatibilidade total
+# Sistema completo com dados AO VIVO e análise matemática
+
+version: '3.8'
+
+networks:
+  football-network:
+    driver: bridge
+
+services:
+  # 🗃️ PostgreSQL Database
+  database:
+    image: postgres:15-alpine
+    container_name: football_database
+    networks:
+      - football-network
+    environment:
+      POSTGRES_DB: football_analytics
+      POSTGRES_USER: football_user
+      POSTGRES_PASSWORD: football_pass123
+      POSTGRES_INITDB_ARGS: "--encoding=UTF8 --locale=C"
+    ports:
+      - "5432:5432"
+    volumes:
+      - football_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U football_user -d football_analytics"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+    restart: unless-stopped
+
+  # 🚀 Redis Cache
+  cache:
+    image: redis:7-alpine
+    container_name: football_cache
+    networks:
+      - football-network
+    ports:
+      - "6379:6379"
+    command: >
+      redis-server
+      --appendonly yes
+      --maxmemory 512mb
+      --maxmemory-policy allkeys-lru
+      --save 900 1
+      --save 300 10
+      --save 60 10000
+    volumes:
+      - football_cache_data:/data
+    healthcheck:
+      test: ["CMD", "redis-cli", "ping"]
+      interval: 10s
+      timeout: 3s
+      retries: 3
+    restart: unless-stopped
+
+  # 🧠 Backend API - Motor de Predições Real
+  api:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.new
+      target: production
+    container_name: football_api
+    networks:
+      - football-network
+    environment:
+      # 🔧 Sistema
+      - PYTHONPATH=/app
+      - PYTHONUNBUFFERED=1
+      - ENVIRONMENT=production
+
+      # 🗃️ Database
+      - POSTGRES_SERVER=database
+      - POSTGRES_USER=football_user
+      - POSTGRES_PASSWORD=football_pass123
+      - POSTGRES_DB=football_analytics
+      - POSTGRES_PORT=5432
+
+      # 🚀 Cache
+      - REDIS_URL=redis://cache:6379
+
+      # 🔑 APIs REAIS - Usar as chaves configuradas
+      - FOOTBALL_DATA_API_KEY=d25270fde39e49e6bbd9b5e24216b2ee
+      - ODDS_API_KEY=5c976291a9f77aea3d27e8bbcf14f000
+      - WEATHER_API_KEY=sua_chave_openweather_aqui
+
+      # 🧠 Motor de Predições Real
+      - PREDICTION_ENGINE_VERSION=2.0
+      - ENABLE_REAL_TIME_PREDICTIONS=true
+      - USE_REAL_APIS=true
+      - CACHE_PREDICTIONS=true
+
+      # 🌐 URLs das APIs
+      - FOOTBALL_DATA_BASE_URL=https://api.football-data.org/v4
+      - ODDS_API_BASE_URL=https://api.the-odds-api.com/v4
+      - WEATHER_API_BASE_URL=https://api.openweathermap.org/data/2.5
+
+      # 🔐 Security
+      - SECRET_KEY=football_analytics_secret_key_2024
+      - BACKEND_CORS_ORIGINS=http://localhost:3000,http://localhost:8080
+
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app:ro
+      - football_api_cache:/app/cache
+      - football_api_logs:/app/logs
+    depends_on:
+      database:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    restart: unless-stopped
+
+  # 🎨 Frontend React
+  web:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile.new
+      target: production
+    container_name: football_web
+    networks:
+      - football-network
+    environment:
+      - REACT_APP_API_URL=http://localhost:8000/api/v1
+      - REACT_APP_PREDICTION_ENGINE=real
+      - REACT_APP_VERSION=2.0
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/app:ro
+      - football_web_cache:/app/.next
+    depends_on:
+      - api
+    restart: unless-stopped
+
+  # 🧪 Teste do Motor Real (profile: test)
+  test-engine:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile.new
+      target: testing
+    container_name: football_test_engine
+    networks:
+      - football-network
+    environment:
+      # Database de teste
+      - POSTGRES_SERVER=database
+      - POSTGRES_USER=football_user
+      - POSTGRES_PASSWORD=football_pass123
+      - POSTGRES_DB=football_analytics
+      - POSTGRES_PORT=5432
+
+      # Cache
+      - REDIS_URL=redis://cache:6379
+
+      # APIs REAIS para teste
+      - FOOTBALL_DATA_API_KEY=d25270fde39e49e6bbd9b5e24216b2ee
+      - ODDS_API_KEY=5c976291a9f77aea3d27e8bbcf14f000
+      - WEATHER_API_KEY=sua_chave_openweather_aqui
+
+      # Modo de teste
+      - TESTING_MODE=true
+      - TEST_REAL_APIS=true
+      - LOG_LEVEL=DEBUG
+
+    volumes:
+      - ./backend:/app:ro
+      - football_test_results:/app/test_results
+    depends_on:
+      database:
+        condition: service_healthy
+      cache:
+        condition: service_healthy
+    profiles:
+      - test
+    command: python test_live_predictions_complete.py
+
+volumes:
+  football_db_data:
+    driver: local
+  football_cache_data:
+    driver: local
+  football_api_cache:
+    driver: local
+  football_api_logs:
+    driver: local
+  football_web_cache:
+    driver: local
+  football_test_results:
+    driver: local
+
+# 📖 INSTRUÇÕES DE USO:
+#
+# 🚀 Iniciar ambiente completo:
+# docker-compose -f docker-compose.new.yml up -d
+#
+# 🧪 Executar testes do motor real:
+# docker-compose -f docker-compose.new.yml --profile test up test-engine
+#
+# 📊 Ver logs em tempo real:
+# docker-compose -f docker-compose.new.yml logs -f api
+#
+# 🔍 Status dos serviços:
+# docker-compose -f docker-compose.new.yml ps
+#
+# 🛑 Parar tudo:
+# docker-compose -f docker-compose.new.yml down
+#
+# 🗑️ Limpar volumes (CUIDADO - apaga dados):
+# docker-compose -f docker-compose.new.yml down -v
+#
+# 🔄 Rebuildar imagens:
+# docker-compose -f docker-compose.new.yml build --no-cache
+#
+# 🌐 Acessos:
+# - API: http://localhost:8000
+# - Docs: http://localhost:8000/docs
+# - Frontend: http://localhost:3000
+# - Health: http://localhost:8000/health

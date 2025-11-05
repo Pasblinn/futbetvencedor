@@ -1,0 +1,80 @@
+# Dependencies
+node_modules/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+fresh_venv/
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Logs
+*.log
+logs/
+backend.log
+frontend.log
+scheduler.log
+uvicorn.log
+
+# Database (não versionar DBs locais)
+*.db
+*.sqlite
+*.db-journal
+*.db-wal
+*.db-shm
+
+# Build outputs
+dist/
+build/
+*.egg-info/
+backend/backend/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# API Keys and secrets
+config/secrets.json
+.env.secrets
+
+# ML Models (modelos treinados são grandes)
+models/*.pkl
+models/*.joblib
+*.h5
+backend/models/
+
+# Cache
+.cache/
+.pytest_cache/
+
+# Coverage
+htmlcov/
+.coverage
+.nyc_output/
+
+# Data directories (dados coletados podem ser grandes)
+raw_data/
+scraped_tables/
+ml_ready/
+api_fresh_data/
+retraining_data/
+test_results/
+
+# CSV files (podem conter dados sensíveis ou serem muito grandes)
+*.csv
+
+# Alembic (migrations devem ser versionadas, mas estado de migração não)
+alembic.ini

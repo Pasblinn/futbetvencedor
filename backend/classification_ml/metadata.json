@@ -1,0 +1,124 @@
+{
+  "dataset_version": "1.0.0",
+  "generated_at": "2025-09-24T13:02:30.055204",
+  "num_feature_records": 20,
+  "num_label_records": 0,
+  "num_features": 22,
+  "source_sites": [
+    "pt.wikipedia.org"
+  ],
+  "competitions": [
+    "brasileirao"
+  ],
+  "seasons": [
+    "2024"
+  ],
+  "scraped_range": {
+    "min": "2025-09-24 12:50:31",
+    "max": "2025-09-24 12:50:31"
+  },
+  "file_hashes": {
+    "features": "56bb1e81cc10ef4d28d1356cfffc4e4d",
+    "labels": null
+  },
+  "config": {
+    "missing_threshold": 0.8,
+    "categorical_encoding": "label",
+    "numerical_imputation": "median",
+    "categorical_imputation": "most_frequent",
+    "date_format": "%Y-%m-%d",
+    "output_partitioning": [
+      "competition",
+      "season"
+    ],
+    "min_matches_per_team": 5,
+    "feature_windows": [
+      5,
+      10
+    ]
+  },
+  "validation_report": {
+    "features": {
+      "total_records": 20,
+      "total_features": 22,
+      "missing_values": {
+        "pos": 0,
+        "equipevde": 0,
+        "pts": 0,
+        "j": 0,
+        "v": 0,
+        "e": 0,
+        "d": 0,
+        "gp": 0,
+        "gc": 0,
+        "sg": 0,
+        "classificao_ou_descenso": 2,
+        "source_site": 0,
+        "competition": 0,
+        "season": 0,
+        "scraped_at": 0,
+        "id": 0,
+        "equipevde_encoded": 0,
+        "sg_encoded": 0,
+        "classificao_ou_descenso_encoded": 0,
+        "source_site_encoded": 0,
+        "competition_encoded": 0,
+        "season_encoded": 0
+      },
+      "data_types": {
+        "pos": "float64",
+        "equipevde": "object",
+        "pts": "float64",
+        "j": "float64",
+        "v": "float64",
+        "e": "float64",
+        "d": "float64",
+        "gp": "float64",
+        "gc": "float64",
+        "sg": "object",
+        "classificao_ou_descenso": "object",
+        "source_site": "object",
+        "competition": "object",
+        "season": "object",
+        "scraped_at": "datetime64[ns]",
+        "id": "object",
+        "equipevde_encoded": "float64",
+        "sg_encoded": "float64",
+        "classificao_ou_descenso_encoded": "float64",
+        "source_site_encoded": "float64",
+        "competition_encoded": "float64",
+        "season_encoded": "float64"
+      },
+      "numeric_features": [
+        "pos",
+        "pts",
+        "j",
+        "v",
+        "e",
+        "d",
+        "gp",
+        "gc",
+        "equipevde_encoded",
+        "sg_encoded",
+        "classificao_ou_descenso_encoded",
+        "source_site_encoded",
+        "competition_encoded",
+        "season_encoded"
+      ],
+      "categorical_features": [
+        "equipevde",
+        "sg",
+        "classificao_ou_descenso",
+        "source_site",
+        "competition",
+        "season",
+        "id"
+      ]
+    },
+    "validation_checks": {
+      "has_required_fields": true,
+      "no_duplicate_ids": true,
+      "consistent_record_count": true
+    }
+  }
+}

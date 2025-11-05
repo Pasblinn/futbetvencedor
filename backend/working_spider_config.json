@@ -1,0 +1,123 @@
+{
+  "SITE_CONFIGS": {
+    "pt.wikipedia.org": {
+      "strategy": [
+        "requests",
+        "scrapy"
+      ],
+      "delay": 2,
+      "use_proxy": false,
+      "table_selectors": [
+        "table.wikitable",
+        "table"
+      ],
+      "success_rate": 1.0,
+      "last_tested": "2024-09-24",
+      "status": "WORKING"
+    },
+    "en.wikipedia.org": {
+      "strategy": [
+        "requests",
+        "scrapy"
+      ],
+      "delay": 2,
+      "use_proxy": false,
+      "table_selectors": [
+        "table.wikitable",
+        "table"
+      ],
+      "success_rate": 1.0,
+      "last_tested": "2024-09-24",
+      "status": "WORKING"
+    },
+    "ge.globo.com": {
+      "strategy": [
+        "requests",
+        "requests_html"
+      ],
+      "delay": 3,
+      "use_proxy": false,
+      "table_selectors": [
+        ".tabela",
+        ".classificacao",
+        ".fixture"
+      ],
+      "custom_parser": "globo_parser",
+      "success_rate": 0.7,
+      "last_tested": "2024-09-24",
+      "status": "CONTENT_AVAILABLE"
+    },
+    "terra.com.br": {
+      "strategy": [
+        "requests",
+        "requests_html"
+      ],
+      "delay": 3,
+      "use_proxy": false,
+      "table_selectors": [
+        ".tabela",
+        ".classificacao"
+      ],
+      "custom_parser": "terra_parser",
+      "success_rate": 0.7,
+      "last_tested": "2024-09-24",
+      "status": "CONTENT_AVAILABLE"
+    }
+  },
+  "BLOCKED_SITES": {
+    "fbref.com": {
+      "strategy": [
+        "undetected_chrome",
+        "proxy_requests"
+      ],
+      "delay": 5,
+      "use_proxy": true,
+      "issue": "HTTP 403 - Strong anti-bot",
+      "success_rate": 0.0,
+      "last_tested": "2024-09-24",
+      "status": "BLOCKED"
+    },
+    "sofascore.com": {
+      "strategy": [
+        "undetected_chrome",
+        "proxy_requests"
+      ],
+      "delay": 10,
+      "use_proxy": true,
+      "issue": "HTTP 403 - Cloudflare",
+      "success_rate": 0.0,
+      "last_tested": "2024-09-24",
+      "status": "BLOCKED"
+    },
+    "oddspedia.com": {
+      "strategy": [
+        "selenium",
+        "proxy_requests"
+      ],
+      "delay": 8,
+      "use_proxy": true,
+      "issue": "HTTP 403 - Anti-bot",
+      "success_rate": 0.0,
+      "last_tested": "2024-09-24",
+      "status": "BLOCKED"
+    }
+  },
+  "COMPETITION_URLS": {
+    "brasileirao": {
+      "2024": [
+        "https://pt.wikipedia.org/wiki/Campeonato_Brasileiro_de_Futebol_de_2024_-_S%C3%A9rie_A",
+        "https://en.wikipedia.org/wiki/2024_Campeonato_Brasileiro_S%C3%A9rie_A",
+        "https://ge.globo.com/futebol/brasileirao-serie-a/",
+        "https://www.terra.com.br/esportes/futebol/brasileiro-serie-a/"
+      ]
+    }
+  },
+  "DEFAULT_SETTINGS": {
+    "DOWNLOAD_DELAY": 3,
+    "CONCURRENT_REQUESTS": 2,
+    "RESPECT_ROBOTS_TXT": true,
+    "USER_AGENT_ROTATION": true,
+    "RETRY_ENABLED": true,
+    "RETRY_TIMES": 3
+  }
+}

@@ -1,0 +1,128 @@
+# 🧠 DOCKERFILE NOVO - Motor de Predições Real v2.0
+# Multi-stage build otimizado para o sistema atual
+
+# 🏗️ STAGE 1: Base
+FROM python:3.11-slim-bullseye as base
+
+# Metadados
+LABEL maintainer="Football Analytics Team"
+LABEL description="Motor de Predições Real com dados AO VIVO"
+LABEL version="2.0.0"
+
+# Variáveis de ambiente globais
+ENV PYTHONUNBUFFERED=1 \
+    PYTHONDONTWRITEBYTECODE=1 \
+    PIP_NO_CACHE_DIR=1 \
+    PIP_DISABLE_PIP_VERSION_CHECK=1
+
+# Instalar dependências do sistema
+RUN apt-get update && apt-get install -y \
+    build-essential \
+    libpq-dev \
+    curl \
+    wget \
+    git \
+    && rm -rf /var/lib/apt/lists/* \
+    && apt-get clean
+
+# Criar usuário não-root
+RUN groupadd -r appuser && useradd -r -g appuser appuser
+
+# Diretório de trabalho
+WORKDIR /app
+
+# 🏗️ STAGE 2: Dependencies
+FROM base as dependencies
+
+# Copiar requirements
+COPY requirements.txt .
+
+# Instalar dependências Python
+RUN pip install --upgrade pip setuptools wheel && \
+    pip install -r requirements.txt
+
+# 🏗️ STAGE 3: Production
+FROM dependencies as production
+
+# Copiar código da aplicação
+COPY . .
+
+# Criar diretórios necessários
+RUN mkdir -p \
+    cache \
+    logs \
+    predictions \
+    models \
+    data/exports
+
+# Ajustar permissões
+RUN chown -R appuser:appuser /app
+
+# Mudar para usuário não-root
+USER appuser
+
+# Variáveis específicas para produção
+ENV ENVIRONMENT=production \
+    PREDICTION_ENGINE_VERSION=2.0 \
+    ENABLE_REAL_TIME_PREDICTIONS=true
+
+# Porta
+EXPOSE 8000
+
+# Health check
+HEALTHCHECK --interval=30s --timeout=10s --start-period=40s --retries=3 \
+    CMD curl -f http://localhost:8000/health || exit 1
+
+# Comando principal
+CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
+
+# 🏗️ STAGE 4: Development
+FROM dependencies as development
+
+# Copiar código da aplicação
+COPY . .
+
+# Criar diretórios
+RUN mkdir -p cache logs predictions models data/exports
+
+# Ajustar permissões
+RUN chown -R appuser:appuser /app
+
+USER appuser
+
+# Variáveis para desenvolvimento
+ENV ENVIRONMENT=development \
+    LOG_LEVEL=DEBUG \
+    RELOAD=true
+
+EXPOSE 8000
+
+# Comando com reload para desenvolvimento
+CMD ["python", "-m", "uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000", "--reload"]
+
+# 🏗️ STAGE 5: Testing
+FROM dependencies as testing
+
+# Copiar código da aplicação
+COPY . .
+
+# Criar diretórios de teste
+RUN mkdir -p \
+    test_results \
+    test_logs \
+    test_cache \
+    test_predictions
+
+# Ajustar permissões
+RUN chown -R appuser:appuser /app
+
+USER appuser
+
+# Variáveis para teste
+ENV ENVIRONMENT=testing \
+    TESTING_MODE=true \
+    LOG_LEVEL=DEBUG \
+    TEST_REAL_APIS=true
+
+# Comando padrão para testes
+CMD ["python", "-m", "pytest", "-v", "--tb=short"]

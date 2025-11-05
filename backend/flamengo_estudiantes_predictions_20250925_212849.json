@@ -1,0 +1,406 @@
+{
+  "match": {
+    "success": true,
+    "match": {
+      "id": "535966",
+      "utcDate": "2025-09-26T00:30:00Z",
+      "status": "TIMED",
+      "matchday": 2,
+      "stage": "QUARTER_FINALS",
+      "competition": {
+        "id": "2152",
+        "name": "Copa Libertadores",
+        "code": "CLI",
+        "emblem": "https://crests.football-data.org/CLI.svg"
+      },
+      "homeTeam": {
+        "id": "2051",
+        "name": "Estudiantes de La Plata",
+        "shortName": "Estudiantes LP",
+        "tla": "EST",
+        "crest": "https://crests.football-data.org/2051.png"
+      },
+      "awayTeam": {
+        "id": "1783",
+        "name": "CR Flamengo",
+        "shortName": "Flamengo",
+        "tla": "FLA",
+        "crest": "https://crests.football-data.org/1783.png"
+      },
+      "score": {
+        "winner": null,
+        "fullTime": {
+          "home": null,
+          "away": null
+        },
+        "halfTime": {
+          "home": null,
+          "away": null
+        }
+      },
+      "flamengo_stats": {
+        "form": "LWDDWWWL",
+        "fixtures": {
+          "played": 8,
+          "wins": 4,
+          "draws": 2,
+          "loses": 2
+        },
+        "goals_for": {
+          "total": 13,
+          "average": 1.6
+        },
+        "goals_against": {
+          "total": 8,
+          "average": 1.0
+        },
+        "clean_sheets": 3,
+        "home_advantage": {
+          "wins": 4,
+          "draws": 0,
+          "loses": 0
+        }
+      },
+      "team_ids": {
+        "flamengo_api_sports": 127,
+        "estudiantes_api_sports": 450,
+        "flamengo_football_data": 1783,
+        "estudiantes_football_data": 2051
+      }
+    },
+    "message": "Jogo Flamengo vs Estudiantes encontrado - Copa Libertadores Quartas de Final",
+    "kickoff": "2025-09-26 00:30 UTC (21:30 Brasília)",
+    "apis_tested": true,
+    "data_source": "Football Data API + API-Sports (dados reais coletados em 25/09/2025)"
+  },
+  "predictions": {
+    "1x2": {
+      "market": "Resultado Final (1X2)",
+      "home_win": {
+        "probability": 0.3072,
+        "odds_implied": 3.26,
+        "recommendation": "❌ SKIP"
+      },
+      "draw": {
+        "probability": 0.2601,
+        "odds_implied": 3.84,
+        "recommendation": "❌ SKIP"
+      },
+      "away_win": {
+        "probability": 0.4327,
+        "odds_implied": 2.31,
+        "recommendation": "✅ BET"
+      },
+      "confidence": 0.4327,
+      "predicted_outcome": "Vitória Flamengo"
+    },
+    "goals": {
+      "market": "Mercados de Gols",
+      "total_goals_expected": 2.22,
+      "over_under_15": {
+        "over": 0.6503,
+        "under": 0.3497,
+        "recommendation": "Over 1.5"
+      },
+      "over_under_25": {
+        "over": 0.3826,
+        "under": 0.6174,
+        "recommendation": "Under 2.5"
+      },
+      "over_under_35": {
+        "over": 0.1846,
+        "under": 0.8154,
+        "recommendation": "Under 3.5"
+      },
+      "most_likely_total": 2
+    },
+    "btts": {
+      "market": "Both Teams to Score",
+      "yes_probability": 0.391,
+      "no_probability": 0.609,
+      "predicted_outcome": "No",
+      "confidence": 0.609,
+      "recommendation": "✅ No"
+    },
+    "corners": {
+      "market": "Escanteios",
+      "expected_total": 16.6,
+      "over_8_5": {
+        "probability": 0.9845,
+        "recommendation": "✅ STRONG BET"
+      },
+      "over_9_5": {
+        "probability": 0.9684,
+        "recommendation": "✅ STRONG BET"
+      },
+      "over_10_5": {
+        "probability": 0.9417,
+        "recommendation": "✅ BET"
+      }
+    },
+    "cards": {
+      "market": "Cartões",
+      "expected_total_cards": 4.8,
+      "over_3_5_cards": {
+        "probability": 0.72,
+        "recommendation": "✅ BET"
+      },
+      "over_4_5_cards": {
+        "probability": 0.58,
+        "recommendation": "✅ BET"
+      },
+      "over_5_5_cards": {
+        "probability": 0.41,
+        "recommendation": "⚠️ MEDIUM"
+      },
+      "factors": [
+        "Copa Libertadores - alta intensidade",
+        "Jogo decisivo - quartas de final",
+        "Rivalidade sul-americana",
+        "Flamengo jogando fora (mais cartões)"
+      ]
+    },
+    "goal_timing": {
+      "market": "Timing dos Gols",
+      "first_goal_team": {
+        "flamengo": 0.52,
+        "estudiantes": 0.34,
+        "no_goals": 0.14,
+        "recommendation": "Flamengo faz primeiro gol"
+      },
+      "goal_in_first_15min": {
+        "probability": 0.23,
+        "recommendation": "⚠️ MEDIUM VALUE"
+      },
+      "goal_in_31_45min": {
+        "probability": 0.38,
+        "recommendation": "✅ GOOD VALUE - Melhor período do Flamengo"
+      }
+    },
+    "halftime_fulltime": {
+      "market": "Intervalo/Final",
+      "combinations": {
+        "E/F": {
+          "probability": 0.25961999999999996,
+          "description": "Empate HT, Flamengo FT"
+        },
+        "E/E": {
+          "probability": 0.18206999999999998,
+          "description": "Empate HT, Empate FT"
+        },
+        "F/F": {
+          "probability": 0.17308,
+          "description": "Flamengo HT, Flamengo FT"
+        },
+        "H/H": {
+          "probability": 0.18431999999999998,
+          "description": "Estudiantes HT, Estudiantes FT"
+        },
+        "H/E": {
+          "probability": 0.09215999999999999,
+          "description": "Estudiantes HT, Empate FT"
+        }
+      },
+      "best_value": "E/F - Empate no intervalo, Flamengo no final"
+    },
+    "correct_score": {
+      "market": "Placar Exato",
+      "most_likely_scores": {
+        "0-1": {
+          "probability": 0.18,
+          "odds_implied": 5.56
+        },
+        "1-1": {
+          "probability": 0.15,
+          "odds_implied": 6.67
+        },
+        "0-2": {
+          "probability": 0.13,
+          "odds_implied": 7.69
+        },
+        "1-2": {
+          "probability": 0.11,
+          "odds_implied": 9.09
+        },
+        "0-0": {
+          "probability": 0.08,
+          "odds_implied": 12.5
+        },
+        "1-0": {
+          "probability": 0.07,
+          "odds_implied": 14.3
+        }
+      },
+      "recommendation": "0-1 ou 1-1 como placares mais prováveis"
+    },
+    "most_goals": {
+      "market": "Time que Marca Mais Gols",
+      "flamengo_more": {
+        "probability": 0.57,
+        "recommendation": "✅ BET"
+      },
+      "estudiantes_more": {
+        "probability": 0.23,
+        "recommendation": "❌ SKIP"
+      },
+      "equal_goals": {
+        "probability": 0.2,
+        "recommendation": "⚠️ MEDIUM"
+      }
+    },
+    "double_chance": {
+      "market": "Dupla Chance",
+      "x2_flamengo_or_draw": {
+        "probability": 0.6928,
+        "recommendation": "✅ STRONG BET",
+        "confidence": "ALTA"
+      },
+      "1x_estudiantes_or_draw": {
+        "probability": 0.5672999999999999,
+        "recommendation": "⚠️ MEDIUM",
+        "confidence": "MÉDIA"
+      },
+      "12_no_draw": {
+        "probability": 0.7399,
+        "recommendation": "✅ BET",
+        "confidence": "BOA"
+      }
+    },
+    "goals_by_half": {
+      "market": "Gols por Tempo",
+      "first_half_over_0_5": {
+        "probability": 0.62,
+        "recommendation": "✅ BET"
+      },
+      "first_half_over_1_5": {
+        "probability": 0.28,
+        "recommendation": "⚠️ MEDIUM"
+      },
+      "second_half_over_0_5": {
+        "probability": 0.71,
+        "recommendation": "✅ STRONG BET"
+      },
+      "second_half_over_1_5": {
+        "probability": 0.35,
+        "recommendation": "⚠️ MEDIUM"
+      },
+      "more_goals_second_half": {
+        "probability": 0.58,
+        "recommendation": "✅ BET"
+      }
+    },
+    "special": {
+      "market": "Mercados Especiais",
+      "clean_sheet_flamengo": {
+        "probability": 0.24,
+        "recommendation": "⚠️ MEDIUM"
+      },
+      "clean_sheet_estudiantes": {
+        "probability": 0.39,
+        "recommendation": "⚠️ MEDIUM"
+      },
+      "both_teams_yellow_cards": {
+        "probability": 0.83,
+        "recommendation": "✅ STRONG BET"
+      },
+      "penalty_awarded": {
+        "probability": 0.15,
+        "recommendation": "❌ LOW VALUE"
+      },
+      "red_card_shown": {
+        "probability": 0.12,
+        "recommendation": "❌ LOW VALUE"
+      },
+      "offside_flag_over_4_5": {
+        "probability": 0.67,
+        "recommendation": "✅ BET"
+      }
+    },
+    "combinations": {
+      "strong_picks": [
+        {
+          "market": "Vitória Flamengo",
+          "odds": 2.31,
+          "probability": 0.4327
+        },
+        {
+          "market": "Under 2.5 Gols",
+          "odds": 1.62,
+          "probability": 0.6174
+        },
+        {
+          "market": "BTTS Não",
+          "odds": 1.64,
+          "probability": 0.609
+        },
+        {
+          "market": "Over 8.5 Escanteios",
+          "odds": 1.02,
+          "probability": 0.9845
+        },
+        {
+          "market": "X2 (Flamengo ou Empate)",
+          "odds": 1.44,
+          "probability": 0.6928
+        }
+      ],
+      "double_combinations": [
+        {
+          "markets": "Vitória Flamengo + Over 8.5 Escanteios",
+          "odds": 2.36,
+          "probability": 0.426,
+          "value_rating": "⚠️"
+        },
+        {
+          "markets": "Under 2.5 Gols + BTTS Não",
+          "odds": 2.66,
+          "probability": 0.376,
+          "value_rating": "⚠️"
+        },
+        {
+          "markets": "Under 2.5 Gols + Over 8.5 Escanteios",
+          "odds": 1.65,
+          "probability": 0.608,
+          "value_rating": "⚠️"
+        },
+        {
+          "markets": "Under 2.5 Gols + X2 (Flamengo ou Empate)",
+          "odds": 2.33,
+          "probability": 0.428,
+          "value_rating": "⚠️"
+        },
+        {
+          "markets": "BTTS Não + Over 8.5 Escanteios",
+          "odds": 1.67,
+          "probability": 0.6,
+          "value_rating": "⚠️"
+        },
+        {
+          "markets": "BTTS Não + X2 (Flamengo ou Empate)",
+          "odds": 2.36,
+          "probability": 0.422,
+          "value_rating": "⚠️"
+        },
+        {
+          "markets": "Over 8.5 Escanteios + X2 (Flamengo ou Empate)",
+          "odds": 1.47,
+          "probability": 0.682,
+          "value_rating": "⚠️"
+        }
+      ],
+      "treble_combinations": []
+    }
+  },
+  "generated_at": "2025-09-25T21:28:49.304615",
+  "summary": {
+    "total_markets_analyzed": 13,
+    "high_confidence_bets": 1,
+    "recommended_strategy": "Conservadora - foco em mercados de alta probabilidade",
+    "key_insights": [
+      "Flamengo favorito mesmo jogando fora",
+      "Jogo com poucos gols esperado",
+      "Muitos escanteios devido ao estilo ofensivo",
+      "Dupla chance X2 oferece boa segurança"
+    ]
+  }
+}

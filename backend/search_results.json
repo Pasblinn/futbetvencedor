@@ -1,0 +1,164 @@
+{
+  "search_terms": [
+    "Flamengo",
+    "Estudiantes",
+    "Libertadores"
+  ],
+  "apis_tested": [],
+  "matches_found": [],
+  "team_info": {
+    "flamengo": {
+      "id": 127,
+      "name": "Flamengo",
+      "country": "Brazil",
+      "logo": "https://media.api-sports.io/football/teams/127.png",
+      "venue": {
+        "id": 204,
+        "name": "Estadio Jornalista Mário Filho (Maracanã)",
+        "address": "Rua Professor Eurico Rabelo, Maracanã",
+        "city": "Rio de Janeiro, Rio de Janeiro",
+        "capacity": 78838,
+        "surface": "grass",
+        "image": "https://media.api-sports.io/football/venues/204.png"
+      }
+    }
+  },
+  "api_responses": {
+    "football_data": {
+      "status": "error",
+      "message": "argument of type 'NoneType' is not iterable"
+    },
+    "api_sports": {
+      "status": "success",
+      "teams_found": 12
+    },
+    "local_db": {
+      "status": "error",
+      "message": "no such table: leagues"
+    },
+    "today_matches": {
+      "status": "success",
+      "matches_found": 2,
+      "matches": [
+        {
+          "area": {
+            "id": 2220,
+            "name": "South America",
+            "code": "SAM",
+            "flag": "https://crests.football-data.org/CLI.svg"
+          },
+          "competition": {
+            "id": 2152,
+            "name": "Copa Libertadores",
+            "code": "CLI",
+            "type": "CUP",
+            "emblem": "https://crests.football-data.org/CLI.svg"
+          },
+          "season": {
+            "id": 2366,
+            "startDate": "2025-02-05",
+            "endDate": "2025-11-29",
+            "currentMatchday": 6,
+            "winner": null
+          },
+          "id": 551890,
+          "utcDate": "2025-09-25T00:30:00Z",
+          "status": "TIMED",
+          "matchday": 2,
+          "stage": "QUARTER_FINALS",
+          "group": null,
+          "lastUpdated": "2025-09-25T00:21:01Z",
+          "homeTeam": {
+            "id": 1769,
+            "name": "SE Palmeiras",
+            "shortName": "Palmeiras",
+            "tla": "PAL",
+            "crest": "https://crests.football-data.org/1769.png"
+          },
+          "awayTeam": {
+            "id": 6667,
+            "name": "CA River Plate",
+            "shortName": "River Plate",
+            "tla": "RIV",
+            "crest": "https://crests.football-data.org/6667.png"
+          },
+          "score": {
+            "winner": null,
+            "duration": "REGULAR",
+            "fullTime": {
+              "home": null,
+              "away": null
+            },
+            "halfTime": {
+              "home": null,
+              "away": null
+            }
+          },
+          "odds": {
+            "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+          },
+          "referees": []
+        },
+        {
+          "area": {
+            "id": 2220,
+            "name": "South America",
+            "code": "SAM",
+            "flag": "https://crests.football-data.org/CLI.svg"
+          },
+          "competition": {
+            "id": 2152,
+            "name": "Copa Libertadores",
+            "code": "CLI",
+            "type": "CUP",
+            "emblem": "https://crests.football-data.org/CLI.svg"
+          },
+          "season": {
+            "id": 2366,
+            "startDate": "2025-02-05",
+            "endDate": "2025-11-29",
+            "currentMatchday": 6,
+            "winner": null
+          },
+          "id": 551889,
+          "utcDate": "2025-09-25T22:00:00Z",
+          "status": "TIMED",
+          "matchday": 2,
+          "stage": "QUARTER_FINALS",
+          "group": null,
+          "lastUpdated": "2025-08-29T00:20:56Z",
+          "homeTeam": {
+            "id": 1776,
+            "name": "São Paulo FC",
+            "shortName": "São Paulo",
+            "tla": "PAU",
+            "crest": "https://crests.football-data.org/1776.png"
+          },
+          "awayTeam": {
+            "id": 4528,
+            "name": "LDU de Quito",
+            "shortName": "LDU de Quito",
+            "tla": "LDU",
+            "crest": "https://crests.football-data.org/4528.png"
+          },
+          "score": {
+            "winner": null,
+            "duration": "REGULAR",
+            "fullTime": {
+              "home": null,
+              "away": null
+            },
+            "halfTime": {
+              "home": null,
+              "away": null
+            }
+          },
+          "odds": {
+            "msg": "Activate Odds-Package in User-Panel to retrieve odds."
+          },
+          "referees": []
+        }
+      ]
+    }
+  }
+}

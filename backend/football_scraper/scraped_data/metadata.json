@@ -1,0 +1,15 @@
+{
+  "dataset_version": "1.0.0",
+  "generated_at": "2025-09-24T12:27:59.534490",
+  "scraping_started": "2025-09-24T12:27:38.331786",
+  "scraping_duration_seconds": 21.2,
+  "total_items": 0,
+  "source_sites": [],
+  "competitions": [],
+  "seasons": [],
+  "files": {},
+  "scraping_stats": {
+    "spider_name": "football_spider",
+    "items_per_second": 0.0
+  }
+}

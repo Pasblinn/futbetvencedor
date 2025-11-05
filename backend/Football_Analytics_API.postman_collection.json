@@ -1,0 +1,446 @@
+{
+	"info": {
+		"_postman_id": "football-analytics-api",
+		"name": "Football Analytics API - Comprehensive Testing",
+		"description": "Complete test collection for Football Analytics API with real-time predictions, ML models, and mathematical analysis",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8000",
+			"type": "string"
+		},
+		{
+			"key": "api_version",
+			"value": "/api/v1",
+			"type": "string"
+		}
+	],
+	"item": [
+		{
+			"name": "🏥 Health & Status",
+			"item": [
+				{
+					"name": "Health Check",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/health",
+							"host": ["{{base_url}}"],
+							"path": ["health"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Root API Info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/",
+							"host": ["{{base_url}}"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "System Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/system/status",
+							"host": ["{{base_url}}"],
+							"path": ["system", "status"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "🧠 Mathematical Predictions",
+			"item": [
+				{
+					"name": "Test Live Prediction Engine (Man United vs Man City)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{api_version}}/predictions/test-live-engine/64/65",
+							"host": ["{{base_url}}"],
+							"path": ["{{api_version}}", "predictions", "test-live-engine", "64", "65"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test Live Prediction Engine (Liverpool vs Arsenal)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{api_version}}/predictions/test-live-engine/67/68",
+							"host": ["{{base_url}}"],
+							"path": ["{{api_version}}", "predictions", "test-live-engine", "67", "68"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Test with Venue Parameter",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{api_version}}/predictions/test-live-engine/64/65?venue=Old Trafford",
+							"host": ["{{base_url}}"],
+							"path": ["{{api_version}}", "predictions", "test-live-engine", "64", "65"],
+							"query": [
+								{
+									"key": "venue",
+									"value": "Old Trafford"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "🤖 Machine Learning Predictions",
+			"item": [
+				{
+					"name": "ML System Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{api_version}}/ml/system/status",
+							"host": ["{{base_url}}"],
+							"path": ["{{api_version}}", "ml", "system", "status"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enhanced Prediction (ML + Mathematical)",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{api_version}}/ml/enhanced-prediction/64/65",
+							"host": ["{{base_url}}"],
+							"path": ["{{api_version}}", "ml", "enhanced-prediction", "64", "65"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Enhanced Prediction with Date",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{api_version}}/ml/enhanced-prediction/67/68?match_date=2025-09-25T15:00:00",
+							"host": ["{{base_url}}"],
+							"path": ["{{api_version}}", "ml", "enhanced-prediction", "67", "68"],
+							"query": [
+								{
+									"key": "match_date",
+									"value": "2025-09-25T15:00:00"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "🎓 ML Training & Management",
+			"item": [
+				{
+					"name": "Start Full Training",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"training_type\": \"full\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_version}}/ml/training/start",
+							"host": ["{{base_url}}"],
+							"path": ["{{api_version}}", "ml", "training", "start"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Start Quick Training",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n  \"training_type\": \"quick\"\n}"
+						},
+						"url": {
+							"raw": "{{base_url}}{{api_version}}/ml/training/start",
+							"host": ["{{base_url}}"],
+							"path": ["{{api_version}}", "ml", "training", "start"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Training Status",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{api_version}}/ml/training/status",
+							"host": ["{{base_url}}"],
+							"path": ["{{api_version}}", "ml", "training", "status"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "📊 Test Scenarios",
+			"item": [
+				{
+					"name": "Premier League Derby Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Response has prediction data\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('match_outcome');",
+									"    pm.expect(jsonData).to.have.property('goals_prediction');",
+									"    pm.expect(jsonData).to.have.property('confidence_system');",
+									"});",
+									"",
+									"pm.test(\"Confidence system is working\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.confidence_system).to.have.property('overall_confidence');",
+									"    pm.expect(jsonData.confidence_system.overall_confidence).to.be.a('number');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{api_version}}/predictions/test-live-engine/64/65",
+							"host": ["{{base_url}}"],
+							"path": ["{{api_version}}", "predictions", "test-live-engine", "64", "65"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ML Enhanced Prediction Test",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {",
+									"    pm.response.to.have.status(200);",
+									"});",
+									"",
+									"pm.test(\"Enhanced prediction structure\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData).to.have.property('status', 'success');",
+									"    pm.expect(jsonData).to.have.property('data');",
+									"    pm.expect(jsonData.data).to.have.property('predictions');",
+									"});",
+									"",
+									"pm.test(\"System status included\", function () {",
+									"    var jsonData = pm.response.json();",
+									"    pm.expect(jsonData.data).to.have.property('system_status');",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{api_version}}/ml/enhanced-prediction/64/65",
+							"host": ["{{base_url}}"],
+							"path": ["{{api_version}}", "ml", "enhanced-prediction", "64", "65"]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "🔍 API Documentation",
+			"item": [
+				{
+					"name": "Swagger UI",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "text/html"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}/docs",
+							"host": ["{{base_url}}"],
+							"path": ["docs"]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OpenAPI JSON",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{base_url}}{{api_version}}/openapi.json",
+							"host": ["{{base_url}}"],
+							"path": ["{{api_version}}", "openapi.json"]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Global pre-request script",
+					"console.log('🚀 Testing Football Analytics API...');"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					"// Global test script",
+					"pm.test(\"Response time is reasonable\", function () {",
+					"    pm.expect(pm.response.responseTime).to.be.below(5000);",
+					"});",
+					"",
+					"pm.test(\"No server errors\", function () {",
+					"    pm.expect(pm.response.code).to.be.below(500);",
+					"});"
+				]
+			}
+		}
+	]
+}
